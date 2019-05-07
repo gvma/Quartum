@@ -1,0 +1,33 @@
+<h1>Show Payment</h1>
+
+<ul>
+
+  <li>
+    <strong>Total payment:</strong>
+    <%= @payment.total_payment %>
+  </li>
+
+  <li>
+    <strong>Partial payment:</strong>
+    <%= @payment.partial_payment %>
+  </li>
+
+  <li>
+    <strong>Category:</strong>
+    <%= @payment.category %>
+  </li>
+
+  <li>
+    <strong>Payment method:</strong>
+    <%= @payment.payment_method %>
+  </li>
+
+  <li>
+    <strong>Obs:</strong>
+    <%= @payment.obs %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.payment_path(@conn, :edit, @payment) %></span>
+<span><%= link "Back", to: Routes.payment_path(@conn, :index) %></span>

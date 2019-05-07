@@ -1,0 +1,5 @@
+<h1>Edit Establishment</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.establishment_path(@conn, :update, @establishment)) %>
+
+<span><%= link "Back", to: Routes.establishment_path(@conn, :index) %></span>

@@ -1,0 +1,18 @@
+<h1>Show Establishment</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @establishment.name %>
+  </li>
+
+  <li>
+    <strong>Specifications:</strong>
+    <%= @establishment.specifications %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.establishment_path(@conn, :edit, @establishment) %></span>
+<span><%= link "Back", to: Routes.establishment_path(@conn, :index) %></span>

@@ -1,0 +1,58 @@
+<h1>Show Guest</h1>
+
+<ul>
+
+  <li>
+    <strong>Full name:</strong>
+    <%= @guest.full_name %>
+  </li>
+
+  <li>
+    <strong>Age:</strong>
+    <%= @guest.age %>
+  </li>
+
+  <li>
+    <strong>Photo:</strong>
+    <%= @guest.photo %>
+  </li>
+
+  <li>
+    <strong>Rg:</strong>
+    <%= @guest.rg %>
+  </li>
+
+  <li>
+    <strong>Cpf:</strong>
+    <%= @guest.cpf %>
+  </li>
+
+  <li>
+    <strong>Primary phone:</strong>
+    <%= @guest.primary_phone %>
+  </li>
+
+  <li>
+    <strong>Secondary phone:</strong>
+    <%= @guest.secondary_phone %>
+  </li>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @guest.email %>
+  </li>
+
+  <li>
+    <strong>Birthdate:</strong>
+    <%= @guest.birthdate %>
+  </li>
+
+  <li>
+    <strong>Gender:</strong>
+    <%= @guest.gender %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.guest_path(@conn, :edit, @guest) %></span>
+<span><%= link "Back", to: Routes.guest_path(@conn, :index) %></span>

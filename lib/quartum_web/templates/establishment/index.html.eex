@@ -1,0 +1,28 @@
+<h1>Listing Establishments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Specifications</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for establishment <- @establishments do %>
+    <tr>
+      <td><%= establishment.name %></td>
+      <td><%= establishment.specifications %></td>
+
+      <td>
+        <%= link "Show", to: Routes.establishment_path(@conn, :show, establishment) %>
+        <%= link "Edit", to: Routes.establishment_path(@conn, :edit, establishment) %>
+        <%= link "Delete", to: Routes.establishment_path(@conn, :delete, establishment), method: :delete, data: [confirm: "Are you sure?"] %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Establishment", to: Routes.establishment_path(@conn, :new) %></span>
