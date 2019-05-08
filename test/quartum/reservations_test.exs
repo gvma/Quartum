@@ -140,4 +140,71 @@ defmodule Quartum.ReservationsTest do
       assert %Ecto.Changeset{} = Reservations.change_room(room)
     end
   end
+
+  describe "reservations" do
+    alias Quartum.Reservations.Reservation
+
+    @valid_attrs %{checkin_time: ~N[2010-04-17 14:00:00], checkout_time: ~N[2010-04-17 14:00:00], guest_count: 42, number: 42, status: "some status"}
+    @update_attrs %{checkin_time: ~N[2011-05-18 15:01:01], checkout_time: ~N[2011-05-18 15:01:01], guest_count: 43, number: 43, status: "some updated status"}
+    @invalid_attrs %{checkin_time: nil, checkout_time: nil, guest_count: nil, number: nil, status: nil}
+
+    def reservation_fixture(attrs \\ %{}) do
+      {:ok, reservation} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Reservations.create_reservation()
+
+      reservation
+    end
+
+    test "list_reservations/0 returns all reservations" do
+      reservation = reservation_fixture()
+      assert Reservations.list_reservations() == [reservation]
+    end
+
+    test "get_reservation!/1 returns the reservation with given id" do
+      reservation = reservation_fixture()
+      assert Reservations.get_reservation!(reservation.id) == reservation
+    end
+
+    test "create_reservation/1 with valid data creates a reservation" do
+      assert {:ok, %Reservation{} = reservation} = Reservations.create_reservation(@valid_attrs)
+      assert reservation.checkin_time == ~N[2010-04-17 14:00:00]
+      assert reservation.checkout_time == ~N[2010-04-17 14:00:00]
+      assert reservation.guest_count == 42
+      assert reservation.number == 42
+      assert reservation.status == "some status"
+    end
+
+    test "create_reservation/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Reservations.create_reservation(@invalid_attrs)
+    end
+
+    test "update_reservation/2 with valid data updates the reservation" do
+      reservation = reservation_fixture()
+      assert {:ok, %Reservation{} = reservation} = Reservations.update_reservation(reservation, @update_attrs)
+      assert reservation.checkin_time == ~N[2011-05-18 15:01:01]
+      assert reservation.checkout_time == ~N[2011-05-18 15:01:01]
+      assert reservation.guest_count == 43
+      assert reservation.number == 43
+      assert reservation.status == "some updated status"
+    end
+
+    test "update_reservation/2 with invalid data returns error changeset" do
+      reservation = reservation_fixture()
+      assert {:error, %Ecto.Changeset{}} = Reservations.update_reservation(reservation, @invalid_attrs)
+      assert reservation == Reservations.get_reservation!(reservation.id)
+    end
+
+    test "delete_reservation/1 deletes the reservation" do
+      reservation = reservation_fixture()
+      assert {:ok, %Reservation{}} = Reservations.delete_reservation(reservation)
+      assert_raise Ecto.NoResultsError, fn -> Reservations.get_reservation!(reservation.id) end
+    end
+
+    test "change_reservation/1 returns a reservation changeset" do
+      reservation = reservation_fixture()
+      assert %Ecto.Changeset{} = Reservations.change_reservation(reservation)
+    end
+  end
 end

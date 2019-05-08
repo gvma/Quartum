@@ -29,7 +29,6 @@ defmodule Quartum.Reservations.Payment do
       attrs
     end
 
-    attrs =
     if Map.has_key?(attrs, "partial_payment") do
       Map.update!(attrs, "partial_payment", &convert_to_money/1)
     else

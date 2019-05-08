@@ -68,8 +68,8 @@ config :phoenix, :plug_init_mode, :runtime
 
 # Configure your database
 config :quartum, Quartum.Repo,
-  username: "postgres",
-  password: "123456",
+  username: "gvma",
+  password: "Guiga30.123",
   database: "quartum_dev",
   hostname: "localhost",
   pool_size: 10

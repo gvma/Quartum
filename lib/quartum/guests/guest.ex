@@ -23,7 +23,7 @@ defmodule Quartum.Guests.Guest do
   @doc false
   def changeset(guest, attrs) do
     guest
-    |> cast(attrs, [:full_name, :age, :photo, :rg, :cpf, :primary_phone, :secondary_phone, :email, :birthdate, :gender])
-    |> validate_required([:full_name, :age, :photo, :rg, :cpf, :primary_phone, :secondary_phone, :email, :birthdate, :gender])
+    |> cast(attrs, [:full_name, :age, :photo, :rg, :cpf, :primary_phone, :secondary_phone, :email, :birthdate, :gender, :address_id])
+    |> validate_required([:full_name, :age, :photo, :rg, :cpf, :primary_phone, :secondary_phone, :email, :birthdate, :gender, :address_id])
   end
 end

@@ -45,9 +45,8 @@
   <%= select f, :address_id, @addresses %>
   <%= error_tag f, :address_id %>
 
-
   <%= label f, :gender %>
-  <%= checkbox f, :gender %>
+  <%= select f, :gender, ["Masculino": true, "Feminino": false] %>
   <%= error_tag f, :gender %>
 
   <div>

@@ -1,0 +1,34 @@
+<h1>Listing Reservations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Checkin time</th>
+      <th>Checkout time</th>
+      <th>Status</th>
+      <th>Number</th>
+      <th>Guest count</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for reservation <- @reservations do %>
+    <tr>
+      <td><%= reservation.checkin_time %></td>
+      <td><%= reservation.checkout_time %></td>
+      <td><%= reservation.status %></td>
+      <td><%= reservation.number %></td>
+      <td><%= reservation.guest_count %></td>
+
+      <td>
+        <%= link "Show", to: Routes.reservation_path(@conn, :show, reservation) %>
+        <%= link "Edit", to: Routes.reservation_path(@conn, :edit, reservation) %>
+        <%= link "Delete", to: Routes.reservation_path(@conn, :delete, reservation), method: :delete, data: [confirm: "Are you sure?"] %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Reservation", to: Routes.reservation_path(@conn, :new) %></span>

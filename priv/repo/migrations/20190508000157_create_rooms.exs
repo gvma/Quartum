@@ -12,6 +12,7 @@ defmodule Quartum.Repo.Migrations.CreateRooms do
       add :microwave, :boolean, default: false, null: false
       add :tv, :boolean, default: false, null: false
       add :air_conditioner, :boolean, default: false, null: false
+      add :habitational_unit, :integer
 
       timestamps()
     end

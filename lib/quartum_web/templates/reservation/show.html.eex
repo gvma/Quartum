@@ -1,0 +1,33 @@
+<h1>Show Reservation</h1>
+
+<ul>
+
+  <li>
+    <strong>Checkin time:</strong>
+    <%= @reservation.checkin_time %>
+  </li>
+
+  <li>
+    <strong>Checkout time:</strong>
+    <%= @reservation.checkout_time %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @reservation.status %>
+  </li>
+
+  <li>
+    <strong>Number:</strong>
+    <%= @reservation.number %>
+  </li>
+
+  <li>
+    <strong>Guest count:</strong>
+    <%= @reservation.guest_count %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.reservation_path(@conn, :edit, @reservation) %></span>
+<span><%= link "Back", to: Routes.reservation_path(@conn, :index) %></span>

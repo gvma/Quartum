@@ -12,6 +12,7 @@ defmodule Quartum.Reservations.Room do
     field :single_beds, :integer
     field :size, :string
     field :tv, :boolean, default: false
+    field :habitational_unit, :integer
 
     timestamps()
   end
@@ -19,7 +20,9 @@ defmodule Quartum.Reservations.Room do
   @doc false
   def changeset(room, attrs) do
     room
-    |> cast(attrs, [:size, :capacity, :bathrooms, :single_beds, :double_beds, :minibar, :microwave, :tv, :air_conditioner])
-    |> validate_required([:size, :capacity, :bathrooms, :single_beds, :double_beds, :minibar, :microwave, :tv, :air_conditioner])
+    |> cast(attrs, [:size, :capacity, :bathrooms, :single_beds, :double_beds, :minibar,
+     :microwave, :tv, :air_conditioner, :habitational_unit])
+    |> validate_required([:size, :capacity, :bathrooms, :single_beds, :double_beds, :minibar,
+     :microwave, :tv, :air_conditioner, :habitational_unit])
   end
 end
