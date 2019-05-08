@@ -34,28 +34,28 @@
   <%= error_tag f, :main_guest_id %>
 
   <h1>New Payment</h1>
-  
+
   <%= inputs_for f, :payment, fn fa -> %>
 
-    <%= label f, :total_payment %>
-    <%= text_input f, :total_payment %>
-    <%= error_tag f, :total_payment %>
+    <%= label fa, :total_payment %>
+    <%= text_input fa, :total_payment %>
+    <%= error_tag fa, :total_payment %>
 
-    <%= label f, :partial_payment %>
-    <%= text_input f, :partial_payment %>
-    <%= error_tag f, :partial_payment %>
+    <%= label fa, :partial_payment %>
+    <%= text_input fa, :partial_payment %>
+    <%= error_tag fa, :partial_payment %>
 
-    <%= label f, :category %>
-    <%= text_input f, :category %>
-    <%= error_tag f, :category %>
+    <%= label fa, :category %>
+    <%= text_input fa, :category %>
+    <%= error_tag fa, :category %>
 
-    <%= label f, :payment_method %>
-    <%= text_input f, :payment_method %>
-    <%= error_tag f, :payment_method %>
+    <%= label fa, :payment_method %>
+    <%= text_input fa, :payment_method %>
+    <%= error_tag fa, :payment_method %>
 
-    <%= label f, :obs %>
-    <%= textarea f, :obs %>
-    <%= error_tag f, :obs %>
+    <%= label fa, :obs %>
+    <%= textarea fa, :obs %>
+    <%= error_tag fa, :obs %>
 
   <% end %>
 
