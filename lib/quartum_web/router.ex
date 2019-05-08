@@ -21,6 +21,7 @@ defmodule QuartumWeb.Router do
     resources "/addresses", AddressController
     resources "/guests", GuestController
     resources "/payments", PaymentController
+    resources "/rooms", RoomController
   end
 
   # Other scopes may use custom stacks.

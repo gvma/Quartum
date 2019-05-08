@@ -1,0 +1,53 @@
+<h1>Show Room</h1>
+
+<ul>
+
+  <li>
+    <strong>Size:</strong>
+    <%= @room.size %>
+  </li>
+
+  <li>
+    <strong>Capacity:</strong>
+    <%= @room.capacity %>
+  </li>
+
+  <li>
+    <strong>Bathrooms:</strong>
+    <%= @room.bathrooms %>
+  </li>
+
+  <li>
+    <strong>Single beds:</strong>
+    <%= @room.single_beds %>
+  </li>
+
+  <li>
+    <strong>Double beds:</strong>
+    <%= @room.double_beds %>
+  </li>
+
+  <li>
+    <strong>Minibar:</strong>
+    <%= @room.minibar %>
+  </li>
+
+  <li>
+    <strong>Microwave:</strong>
+    <%= @room.microwave %>
+  </li>
+
+  <li>
+    <strong>Tv:</strong>
+    <%= @room.tv %>
+  </li>
+
+  <li>
+    <strong>Air conditioner:</strong>
+    <%= @room.air_conditioner %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.room_path(@conn, :edit, @room) %></span>
+<span><%= link "Back", to: Routes.room_path(@conn, :index) %></span>

@@ -1,0 +1,47 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= label f, :size %>
+  <%= text_input f, :size %>
+  <%= error_tag f, :size %>
+
+  <%= label f, :capacity %>
+  <%= number_input f, :capacity %>
+  <%= error_tag f, :capacity %>
+
+  <%= label f, :bathrooms %>
+  <%= number_input f, :bathrooms %>
+  <%= error_tag f, :bathrooms %>
+
+  <%= label f, :single_beds %>
+  <%= number_input f, :single_beds %>
+  <%= error_tag f, :single_beds %>
+
+  <%= label f, :double_beds %>
+  <%= number_input f, :double_beds %>
+  <%= error_tag f, :double_beds %>
+
+  <%= label f, :minibar %>
+  <%= checkbox f, :minibar %>
+  <%= error_tag f, :minibar %>
+
+  <%= label f, :microwave %>
+  <%= checkbox f, :microwave %>
+  <%= error_tag f, :microwave %>
+
+  <%= label f, :tv %>
+  <%= checkbox f, :tv %>
+  <%= error_tag f, :tv %>
+
+  <%= label f, :air_conditioner %>
+  <%= checkbox f, :air_conditioner %>
+  <%= error_tag f, :air_conditioner %>
+
+  <div>
+    <%= submit "Save" %>
+  </div>
+<% end %>

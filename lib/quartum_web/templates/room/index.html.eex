@@ -1,0 +1,42 @@
+<h1>Listing Rooms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Size</th>
+      <th>Capacity</th>
+      <th>Bathrooms</th>
+      <th>Single beds</th>
+      <th>Double beds</th>
+      <th>Minibar</th>
+      <th>Microwave</th>
+      <th>Tv</th>
+      <th>Air conditioner</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for room <- @rooms do %>
+    <tr>
+      <td><%= room.size %></td>
+      <td><%= room.capacity %></td>
+      <td><%= room.bathrooms %></td>
+      <td><%= room.single_beds %></td>
+      <td><%= room.double_beds %></td>
+      <td><%= room.minibar %></td>
+      <td><%= room.microwave %></td>
+      <td><%= room.tv %></td>
+      <td><%= room.air_conditioner %></td>
+
+      <td>
+        <%= link "Show", to: Routes.room_path(@conn, :show, room) %>
+        <%= link "Edit", to: Routes.room_path(@conn, :edit, room) %>
+        <%= link "Delete", to: Routes.room_path(@conn, :delete, room), method: :delete, data: [confirm: "Are you sure?"] %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Room", to: Routes.room_path(@conn, :new) %></span>
