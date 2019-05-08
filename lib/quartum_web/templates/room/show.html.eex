@@ -3,6 +3,11 @@
 <ul>
 
   <li>
+    <strong>Habitational unit:</strong>
+    <%= @room.habitational_unit %>
+  </li>
+
+  <li>
     <strong>Size:</strong>
     <%= @room.size %>
   </li>

@@ -13,11 +13,8 @@ defmodule Quartum.Repo.Migrations.CreateGuests do
       add :email, :string
       add :birthdate, :date
       add :gender, :boolean, default: false, null: false
-      add :address_id, references(:addresses, on_delete: :nothing)
 
       timestamps()
     end
-
-    create index(:guests, [:address_id])
   end
 end

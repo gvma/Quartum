@@ -8,6 +8,8 @@
       <th>Status</th>
       <th>Number</th>
       <th>Guest count</th>
+      <th>Main guest</th>
+      <th>Room</th>
 
       <th></th>
     </tr>
@@ -20,6 +22,8 @@
       <td><%= reservation.status %></td>
       <td><%= reservation.number %></td>
       <td><%= reservation.guest_count %></td>
+      <td><%= reservation.main_guest_id %></td>
+      <td><%= reservation.room_id %></td>
 
       <td>
         <%= link "Show", to: Routes.reservation_path(@conn, :show, reservation) %>

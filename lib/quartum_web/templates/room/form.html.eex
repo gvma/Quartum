@@ -5,6 +5,10 @@
     </div>
   <% end %>
 
+  <%= label f, :habitational_unit %>
+  <%= number_input f, :habitational_unit %>
+  <%= error_tag f, :habitational_unit %>
+
   <%= label f, :size %>
   <%= text_input f, :size %>
   <%= error_tag f, :size %>

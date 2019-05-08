@@ -41,13 +41,43 @@
   <%= date_select f, :birthdate %>
   <%= error_tag f, :birthdate %>
 
-  <%= label f, :address_id %>
-  <%= select f, :address_id, @addresses %>
-  <%= error_tag f, :address_id %>
-
   <%= label f, :gender %>
   <%= select f, :gender, ["Masculino": true, "Feminino": false] %>
   <%= error_tag f, :gender %>
+
+  <h1>New Address</h1>
+  
+  <%= inputs_for f, :address, fn fa -> %>
+
+    <%= label fa, :country %>
+    <%= text_input fa, :country %>
+    <%= error_tag fa, :country %>
+
+    <%= label fa, :city %>
+    <%= text_input fa, :city %>
+    <%= error_tag fa, :city %>
+
+    <%= label fa, :state %>
+    <%= text_input fa, :state %>
+    <%= error_tag fa, :state %>
+
+    <%= label fa, :street %>
+    <%= text_input fa, :street %>
+    <%= error_tag fa, :street %>
+
+    <%= label fa, :street_number %>
+    <%= text_input fa, :street_number %>
+    <%= error_tag fa, :street_number %>
+
+    <%= label fa, :neighborhood %>
+    <%= text_input fa, :neighborhood %>
+    <%= error_tag fa, :neighborhood %>
+
+    <%= label fa, :zip_code %>
+    <%= text_input fa, :zip_code %>
+    <%= error_tag fa, :zip_code %>
+
+  <% end %>
 
   <div>
     <%= submit "Save" %>

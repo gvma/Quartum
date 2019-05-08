@@ -1,6 +1,7 @@
 defmodule Quartum.Reservations.Room do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Quartum.Reservations
 
   schema "rooms" do
     field :air_conditioner, :boolean, default: false
@@ -13,6 +14,8 @@ defmodule Quartum.Reservations.Room do
     field :size, :string
     field :tv, :boolean, default: false
     field :habitational_unit, :integer
+
+    has_many :reservations, Reservations.Reservation
 
     timestamps()
   end

@@ -1,8 +1,8 @@
 defmodule Quartum.Guests.Address do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Guests.Guest
-  
+  alias Quartum.Guests
+
   schema "addresses" do
     field :city, :string
     field :country, :string
@@ -12,7 +12,7 @@ defmodule Quartum.Guests.Address do
     field :street_number, :string
     field :zip_code, :string
 
-    has_one :guest, Guest
+    belongs_to :guest, Guests.Guest
 
     timestamps()
   end

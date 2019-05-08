@@ -33,9 +33,31 @@
   <%= select f, :main_guest_id, @guests %>
   <%= error_tag f, :main_guest_id %>
 
-  <%= label f, :payment_id %>
-  <%= select f, :payment_id, @payments %>
-  <%= error_tag f, :payment_id %>
+  <h1>New Payment</h1>
+  
+  <%= inputs_for f, :payment, fn fa -> %>
+
+    <%= label f, :total_payment %>
+    <%= text_input f, :total_payment %>
+    <%= error_tag f, :total_payment %>
+
+    <%= label f, :partial_payment %>
+    <%= text_input f, :partial_payment %>
+    <%= error_tag f, :partial_payment %>
+
+    <%= label f, :category %>
+    <%= text_input f, :category %>
+    <%= error_tag f, :category %>
+
+    <%= label f, :payment_method %>
+    <%= text_input f, :payment_method %>
+    <%= error_tag f, :payment_method %>
+
+    <%= label f, :obs %>
+    <%= textarea f, :obs %>
+    <%= error_tag f, :obs %>
+
+  <% end %>
 
   <div>
     <%= submit "Save" %>

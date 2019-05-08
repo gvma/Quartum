@@ -10,13 +10,11 @@ defmodule Quartum.Repo.Migrations.CreateReservations do
       add :guest_count, :integer
       add :room_id, references(:rooms, on_delete: :nothing)
       add :main_guest_id, references(:guests, on_delete: :nothing)
-      add :payment_id, references(:payments, on_delete: :nothing)
 
       timestamps()
     end
 
     create index(:reservations, [:room_id])
     create index(:reservations, [:main_guest_id])
-    create index(:reservations, [:payment_id])
   end
 end

@@ -27,6 +27,16 @@
     <%= @reservation.guest_count %>
   </li>
 
+  <li>
+    <strong>Main guest:</strong>
+    <%= @reservation.main_guest_id %>
+  </li>
+
+  <li>
+    <strong>Room:</strong>
+    <%= @reservation.room_id %>
+  </li>
+
 </ul>
 
 <span><%= link "Edit", to: Routes.reservation_path(@conn, :edit, @reservation) %></span>

@@ -8,9 +8,11 @@ defmodule Quartum.Repo.Migrations.CreatePayments do
       add :category, :string
       add :payment_method, :string
       add :obs, :text
+      add :reservation_id, references(:reservations, on_delete: :nothing)
 
       timestamps()
     end
 
+    create index(:payments, [:reservation_id])
   end
 end

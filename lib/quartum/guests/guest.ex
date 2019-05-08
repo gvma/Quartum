@@ -1,7 +1,7 @@
 defmodule Quartum.Guests.Guest do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Guests.Address
+  alias Quartum.Guests
 
   schema "guests" do
     field :age, :integer
@@ -15,7 +15,7 @@ defmodule Quartum.Guests.Guest do
     field :rg, :string
     field :secondary_phone, :string
 
-    belongs_to :address, Address
+    has_one :address, Guests.Address
 
     timestamps()
   end
@@ -23,7 +23,8 @@ defmodule Quartum.Guests.Guest do
   @doc false
   def changeset(guest, attrs) do
     guest
-    |> cast(attrs, [:full_name, :age, :photo, :rg, :cpf, :primary_phone, :secondary_phone, :email, :birthdate, :gender, :address_id])
-    |> validate_required([:full_name, :age, :photo, :rg, :cpf, :primary_phone, :secondary_phone, :email, :birthdate, :gender, :address_id])
+    |> cast(attrs, [:full_name, :age, :photo, :rg, :cpf, :primary_phone, :secondary_phone, :email, :birthdate, :gender])
+    |> validate_required([:full_name, :age, :photo, :rg, :cpf, :primary_phone, :secondary_phone, :email, :birthdate, :gender])
+    |> cast_assoc(:address)
   end
 end

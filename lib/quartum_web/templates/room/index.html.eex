@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>Habitational unit</th>
       <th>Size</th>
       <th>Capacity</th>
       <th>Bathrooms</th>
@@ -19,6 +20,7 @@
   <tbody>
 <%= for room <- @rooms do %>
     <tr>
+      <td><%= room.habitational_unit %></td>
       <td><%= room.size %></td>
       <td><%= room.capacity %></td>
       <td><%= room.bathrooms %></td>

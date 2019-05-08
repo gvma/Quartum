@@ -1,6 +1,7 @@
 defmodule Quartum.Reservations.Payment do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Quartum.Reservations
 
   schema "payments" do
     field :total_payment, Money.Ecto.Composite.Type
@@ -8,6 +9,8 @@ defmodule Quartum.Reservations.Payment do
     field :category, :string
     field :obs, :string
     field :payment_method, :string
+
+    belongs_to :reservation, Reservations.Reservation
 
     timestamps()
   end
@@ -17,8 +20,8 @@ defmodule Quartum.Reservations.Payment do
     attrs = update_attrs(attrs)
 
     payment
-    |> cast(attrs, [:total_payment, :partial_payment, :category, :payment_method, :obs])
-    |> validate_required([:total_payment, :partial_payment, :category, :payment_method, :obs])
+    |> cast(attrs, [:total_payment, :partial_payment, :category, :payment_method, :obs, :reservation_id])
+    |> validate_required([:total_payment, :partial_payment, :category, :payment_method, :obs, :reservation_id])
   end
 
   defp update_attrs(attrs) do
