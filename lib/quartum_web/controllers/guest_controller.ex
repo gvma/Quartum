@@ -11,9 +11,8 @@ defmodule QuartumWeb.GuestController do
 
   def new(conn, _params) do
     changeset = Guests.change_guest(%Guest{})
-    addresses = Enum.map(Guests.list_addresses(), fn x -> {:"#{x.country}#{x.state}#{x.city}", x.id} end)
-    IO.inspect(addresses)
-    render(conn, "new.html", changeset: changeset, addresses: addresses)
+    
+    render(conn, "new.html", changeset: changeset)
   end
 
   def create(conn, %{"guest" => guest_params}) do
@@ -36,8 +35,8 @@ defmodule QuartumWeb.GuestController do
   def edit(conn, %{"id" => id}) do
     guest = Guests.get_guest!(id)
     changeset = Guests.change_guest(guest)
-    addresses = Enum.map(Guests.list_addresses(), fn x -> {:"#{x.country}#{x.state}#{x.city}", x.id} end)
-    render(conn, "edit.html", guest: guest, changeset: changeset, addresses: addresses)
+
+    render(conn, "edit.html", guest: guest, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "guest" => guest_params}) do

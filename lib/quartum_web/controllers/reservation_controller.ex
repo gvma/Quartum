@@ -15,9 +15,8 @@ defmodule QuartumWeb.ReservationController do
 
     rooms = Enum.map(Reservations.list_rooms(), fn x -> {:"#{x.habitational_unit}", x.id} end)
     guests = Enum.map(Guests.list_guests(), fn x -> {:"#{x.full_name} #{x.cpf} #{x.primary_phone}", x.id} end)
-    payments = Enum.map(Reservations.list_payments(), fn x -> {:"#{x.obs}", x.id} end)
 
-    render(conn, "new.html", changeset: changeset, rooms: rooms, guests: guests, payments: payments)
+    render(conn, "new.html", changeset: changeset, rooms: rooms, guests: guests)
   end
 
   def create(conn, %{"reservation" => reservation_params}) do
@@ -28,7 +27,10 @@ defmodule QuartumWeb.ReservationController do
         |> redirect(to: Routes.reservation_path(conn, :show, reservation))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        rooms = Enum.map(Reservations.list_rooms(), fn x -> {:"#{x.habitational_unit}", x.id} end)
+        guests = Enum.map(Guests.list_guests(), fn x -> {:"#{x.full_name} #{x.cpf} #{x.primary_phone}", x.id} end)
+
+        render(conn, "new.html", changeset: changeset, rooms: rooms, guests: guests)
     end
   end
 
@@ -42,10 +44,8 @@ defmodule QuartumWeb.ReservationController do
     changeset = Reservations.change_reservation(reservation)
     rooms = Enum.map(Reservations.list_rooms(), fn x -> {:"#{x.habitational_unit}", x.id} end)
     guests = Enum.map(Guests.list_guests(), fn x -> {:"#{x.full_name} #{x.cpf} #{x.primary_phone}", x.id} end)
-    payments = Enum.map(Reservations.list_payments(), fn x -> {:"#{x.obs}", x.id} end)
 
-    render(conn, "edit.html", reservation: reservation, changeset: changeset,
-     rooms: rooms, guests: guests, payments: payments)
+    render(conn, "edit.html", reservation: reservation, changeset: changeset, rooms: rooms, guests: guests)
   end
 
   def update(conn, %{"id" => id, "reservation" => reservation_params}) do
@@ -58,7 +58,10 @@ defmodule QuartumWeb.ReservationController do
         |> redirect(to: Routes.reservation_path(conn, :show, reservation))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", reservation: reservation, changeset: changeset)
+        rooms = Enum.map(Reservations.list_rooms(), fn x -> {:"#{x.habitational_unit}", x.id} end)
+        guests = Enum.map(Guests.list_guests(), fn x -> {:"#{x.full_name} #{x.cpf} #{x.primary_phone}", x.id} end)
+
+        render(conn, "edit.html", reservation: reservation, changeset: changeset, rooms: rooms, guests: guests)
     end
   end
 

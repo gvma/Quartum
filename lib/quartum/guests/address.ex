@@ -20,7 +20,8 @@ defmodule Quartum.Guests.Address do
   @doc false
   def changeset(address, attrs) do
     address
-    |> cast(attrs, [:country, :city, :state, :street, :street_number, :neighborhood, :zip_code])
+    |> cast(attrs, [:country, :city, :state, :street, :street_number, :neighborhood, :zip_code, :guest_id])
     |> validate_required([:country, :city, :state, :street, :street_number, :neighborhood, :zip_code])
+    |> assoc_constraint(:guest)
   end
 end

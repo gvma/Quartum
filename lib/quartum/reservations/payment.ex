@@ -21,7 +21,8 @@ defmodule Quartum.Reservations.Payment do
 
     payment
     |> cast(attrs, [:total_payment, :partial_payment, :category, :payment_method, :obs, :reservation_id])
-    |> validate_required([:total_payment, :partial_payment, :category, :payment_method, :obs, :reservation_id])
+    |> validate_required([:total_payment, :partial_payment, :category, :payment_method, :obs])
+    |> assoc_constraint(:reservation)
   end
 
   defp update_attrs(attrs) do
