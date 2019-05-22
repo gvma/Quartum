@@ -33,6 +33,17 @@
   </li>
 
   <li>
+    <strong>Companions:</strong>
+    <ul>
+    <%= for guest <- @reservation.companions do %>
+        <li>
+          <%= guest.full_name %>
+        </li>
+    <% end %>
+    </ul>
+  </li>
+
+  <li>
     <strong>Room:</strong>
     <%= @reservation.room_id %>
   </li>

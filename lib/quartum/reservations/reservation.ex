@@ -15,15 +15,18 @@ defmodule Quartum.Reservations.Reservation do
     belongs_to :guest, Guests.Guest, foreign_key: :main_guest_id
 
     has_one :payment, Reservations.Payment
+    many_to_many :companions, Guests.Guest, join_through: "companions"
 
     timestamps()
   end
 
   @doc false
   def changeset(reservation, attrs) do
+    IO.inspect(attrs)
     reservation
     |> cast(attrs, [:checkin_time, :checkout_time, :status, :number, :guest_count, :room_id, :main_guest_id])
     |> validate_required([:checkin_time, :checkout_time, :status, :number, :guest_count, :room_id, :main_guest_id])
     |> cast_assoc(:payment)
+    |> PhoenixMTM.Changeset.cast_collection(:companions, &Reservations.get_companions!(&1))
   end
 end

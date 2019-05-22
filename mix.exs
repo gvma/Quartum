@@ -43,7 +43,8 @@ defmodule Quartum.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:money, "~> 1.4"}
+      {:money, "~> 1.4"},
+      {:phoenix_mtm, "~> 1.0"}
     ]
   end
 

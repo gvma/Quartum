@@ -227,7 +227,13 @@ defmodule Quartum.Reservations do
       ** (Ecto.NoResultsError)
 
   """
-  def get_reservation!(id), do: Repo.get!(Reservation, id)
+  def get_reservation!(id), do: Repo.get!(Reservation, id) |> Repo.preload(:companions)
+
+  alias Quartum.Guests
+
+  def get_companions!(ids) do
+    comps = Repo.all(from g in Guests.Guest, where: g.id in ^ids)
+  end
 
   @doc """
   Creates a reservation.

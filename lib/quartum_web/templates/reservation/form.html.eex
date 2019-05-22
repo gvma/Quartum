@@ -33,6 +33,11 @@
   <%= select f, :main_guest_id, @guests %>
   <%= error_tag f, :main_guest_id %>
 
+  <%= label f, :companions %>
+  <%= PhoenixMTM.Helpers.collection_checkboxes f, :companions,
+      @guests, mapper: &Mapper.bootstrap/6 %>
+  <%= error_tag f, :companions %>
+
   <h1>New Payment</h1>
 
   <%= inputs_for f, :payment, fn fa -> %>

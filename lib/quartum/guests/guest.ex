@@ -2,6 +2,7 @@ defmodule Quartum.Guests.Guest do
   use Ecto.Schema
   import Ecto.Changeset
   alias Quartum.Guests
+  alias Quartum.Reservations
 
   schema "guests" do
     field :age, :integer
@@ -16,6 +17,7 @@ defmodule Quartum.Guests.Guest do
     field :secondary_phone, :string
 
     has_one :address, Guests.Address
+    many_to_many(:reservations, Reservations.Reservation, join_through: "companions")
 
     timestamps()
   end
